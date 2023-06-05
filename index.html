@@ -5,8 +5,10 @@
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AstroEdu | Beranda</title>
+  <title>EDU-SPACE | Selamat Datang</title>
+  <link rel="icon" type="image/png" href="https://app.spline.design/_assets/_icons/icon_favicon32x32.png" sizes="32x32">
   <script src="https://cdn.tailwindcss.com"></script>
+  <script src="//unpkg.com/alpinejs" defer=""></script>
 
   <!-- Require css -->
   <style>
@@ -50,6 +52,58 @@
 </head>
 
 <body>
+  <header class="w-full fixed top-0 left-0 bg-[#0A0E17] z-50" id="navbar">
+    <nav x-data="{ isOpen: false }"
+      class="container p-6 mx-auto lg:flex lg:justify-between lg:items-center backdrop-blur-md">
+      <div class="flex items-center justify-between">
+        <div>
+          <a class="flex gap-4 text-2xl font-bold text-white lg:text-3xl hover:text-gray-300" href="#">
+            <img src="https://app.spline.design/_assets/_icons/icon_favicon16x16.png" class="w-10 h-10" alt="">
+            EDU-SPACE
+          </a>
+        </div>
+
+        <!-- Mobile menu button -->
+        <div class="flex lg:hidden w-full">
+          <button @click="isOpen = !isOpen" type="button"
+            class="text-gray-200 hover:text-gray-400 focus:outline-none focus:text-gray-400" aria-label="toggle menu">
+            <svg x-show="!isOpen" xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24"
+              stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M4 8h16M4 16h16"></path>
+            </svg>
+            <svg x-show="isOpen" xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24"
+              stroke="currentColor" stroke-width="2" style="display: none;">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Mobile Menu open: "block", Menu closed: "hidden" -->
+      <div :class="[isOpen ? 'translate-x-0 opacity-100 ' : 'opacity-0 -translate-x-full']"
+        class="w-full absolute inset-x-0 z-[1000] md:w-full sm:w-full px-6 py-4 transition-all duration-300 ease-in-out shadow-md lg:bg-transparent lg:shadow-none h-screen bg-[#0A0E17] lg:h-fit lg:mt-0 lg:p-0 lg:top-0 lg:relative lg:w-auto lg:opacity-100 lg:translate-x-0 lg:flex lg:items-center">
+        <div
+          class="flex flex-col justify-center items-center gap-12 lg:gap-0 h-full lg:h-0 lg:mt-0 lg:flex-row lg:-px-4 lg:space-y-0 mx-4">
+          <a class="transition-colors duration-300 text-4xl lg:text-base transform lg:mx-4 lg:mt-0 text-gray-200 hover:text-white border-b-2 border-indigo-500"
+            href="index.html">Beranda
+          </a>
+            
+          <a class="transition-colors duration-300 transform text-4xl lg:text-base lg:mx-4 lg:mt-0 text-gray-200 hover:text-white hover:border-b-2 hover:border-indigo-500"
+            href="tentang.html">Tentang</a>
+          <a class="transition-colors duration-300 transform text-4xl lg:text-base lg:mx-4 lg:mt-0 text-gray-200 hover:text-white hover:border-b-2 hover:border-indigo-500"
+            href="kelas-dan-program.html">Kelas & Program</a>
+          <a class="transition-colors duration-300 transform text-4xl lg:text-base lg:mx-4 lg:mt-0 text-gray-200 hover:text-white hover:border-b-2 hover:border-indigo-500"
+            href="blog.html">Blog</a>
+        </div>
+        <a href="masuk.html">
+          <button
+            class="px-6 py-2 font-medium text-white transition-colors duration-300 transform shadow-2xl bg-gradient-to-r from-indigo-700 to-blue-600 hover:from-blue-600 hover:to-indigo-700 rounded-md hover:bg-gray-800 focus:outline-none focus:bg-gray-800">
+            Masuk
+          </button>
+        </a>
+      </div>
+    </nav>
+  </header>
   <!-- ==================== HERO SECTION ==================== -->
   <section class="hero bg-no-repeat bg-cover bg-center bg-[url('./assets/gif/stars.gif')] h-screen">
     <div id="hero-container" class="container mx-auto">
@@ -82,7 +136,7 @@
   <!-- ==================== END OF HERO SECTION ==================== -->
 
   <!-- ==================== MAIN CONTENT ==================== -->
-  <main class="main bg-gray-50 w-full">
+  <main class="main bg-gray-100 w-full pt-8">
 
     <!-- ==================== WHY SECTION ==================== -->
     <section class="why">
@@ -134,7 +188,7 @@
               <h2 class="text-3xl font-bold text-gray-900 lg:text-4xl">
                 Jelajahi Alam Semesta, Bersama Kami
               </h2>
-              <p class="mt-2 text-gray-500 text-justify text-xl">
+              <p class="mt-8 text-gray-500 text-justify text-xl">
                 Edu-Space adalah sebuah platform pendidikan yang menghadirkan pengalaman belajar yang menarik dan
                 interaktif tentang luar angkasa. Kami berkomitmen untuk memberikan pengetahuan yang mendalam dan memikat
                 tentang astronomi, eksplorasi luar angkasa, dan segala hal yang terkait dengan jagad raya.
@@ -145,7 +199,7 @@
                 menyediakan materi yang terstruktur, interaktif, dan mudah dipahami sehingga pembelajaran menjadi lebih
                 menyenangkan.
               </p>
-              <a href="/tentang.html">
+              <a href="/tentang.html" class="mt-8">
                 <button
                   class="mt-4 px-6 py-2 font-medium text-white transition-colors duration-300 transform shadow-xl bg-gradient-to-r from-indigo-700 to-blue-600 hover:from-blue-600 hover:to-indigo-700 rounded-md hover:bg-gray-800 focus:outline-none focus:bg-gray-800">
                   Tentang Kami
@@ -162,7 +216,7 @@
     <section class="benefit">
       <div class="container px-6 py-10 mx-auto">
         <h2 class="text-3xl font-bold text-gray-900 lg:text-4xl text-center">
-          Jelajahi Alam Semesta, dan dapatkan <br> manfaat Belajar dari <span class="text-indigo-600">Kami</span>
+          Dapatkan Manfaat Belajar bersama <span class="text-indigo-600">Kami</span>
         </h2>
         <div class="lg:flex lg:items-center mt-8">
           <div class="w-full lg:w-1/2 ">
@@ -237,31 +291,16 @@
     <!-- ==================== PROGRAM SECTION ==================== -->
     <section class="program">
       <div class="container px-6 py-12 mx-auto">
-        <h2 class="text-3xl font-bold text-gray-900 lg:text-4xl text-center">
+        <h2 class="text-3xl font-bold text-gray-900 lg:text-4xl text-center mb-12">
           Dapatkan Program Khusus<br> <span class="text-indigo-600">Untuk Kamu</span>, Sekarang Juga!
         </h2>
-        <div class="flex justify-center items-center gap-2">
-            <button
-              class="flex justify-center w-full px-6 py-3 mt-4 bg-indigo-600 text-white border-indigo-600 rounded-lg md:w-auto md:mt-0 focus:outline-none">
-                Kelas
-            </button>
-            <button
-              class="flex justify-center w-full px-6 py-3 mt-4 text-indigo-500 rounded-lg md:w-auto md:mt-0 focus:outline-none hover:bg-indigo-600 hover:text-white">
-                Program
-            </button>
-            <button
-              class="flex justify-center w-full px-6 py-3 mt-4 text-indigo-500 rounded-lg md:w-auto md:mt-0 focus:outline-none hover:bg-indigo-600 hover:text-white">
-                Events
-            </button>
-        </div>
-
-        <div class="mt-8 space-y-8 md:-mx-4 md:flex md:items-center md:justify-center md:space-y-0 xl:mt-0">
-          <div class="max-w-sm mx-auto border rounded-lg md:mx-4">
+        <div class="mt-4 space-y-8 md:-mx-4 md:flex md:items-center md:justify-center md:space-y-0 xl:mt-0">
+          <div class="card hover:shadow-lg max-w-sm mx-auto border rounded-lg md:mx-4">
             <div class="p-6">
               <h1 class="text-xl font-medium text-gray-700 capitalize lg:text-2xl">Penjelajahan Angkasa</h1>
               <p class="mt-4 text-gray-500">
-                Kamu akan belajar tentang planet, bintang, galaksi, dan konsep dasar astronomi. Materi pembelajaran
-                yang disajikan dalam format yang mudah dipahami dan diakses secara online.
+                Kamu akan belajar tentang planet, bintang, galaksi, dan konsep dasar astronomi yang mudah dipahami dan
+                diakses secara online.
               </p>
               <h2 class="mt-4 text-2xl font-semibold text-gray-700 sm:text-3xl">Rp. 500.000 <span
                   class="text-base font-medium">/3 Bulan</span></h2>
@@ -299,7 +338,36 @@
                       d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
                       clip-rule="evenodd" />
                   </svg>
-                  <span class="mx-4 text-gray-700">Karir di bidang astronomi</span>
+                  <span class="mx-4 text-gray-700">Karir di bidang astronomi yang jelas dan terjamin</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card hover:shadow-lg  max-w-sm mx-auto border rounded-lg md:mx-4">
+            <div class="p-6">
+              <h1 class="text-xl font-medium text-gray-700 capitalize lg:text-2xl">Pengenalan Astografi<h1>
+                  <p class="mt-4 text-gray-500">
+                    Kamu akan mempelajari cara mengambil gambar langit malam, galaksi, dan benda langit lainnya.
+                  </p>
+                  <h2 class="mt-4 text-2xl font-semibold text-gray-700 sm:text-3xl">Rp. 350.000 <span
+                      class="text-base font-medium">/3 Bulan</span></h2>
+                  <button
+                    class="w-full px-4 py-2 mt-6 tracking-wide text-white capitalize transition-colors duration-300 transform bg-blue-600 rounded-md hover:bg-blue-500 focus:outline-none focus:bg-blue-500 focus:ring focus:ring-blue-300 focus:ring-opacity-80">
+                    Mulai Sekarang
+                  </button>
+            </div>
+            <hr class="border-gray-200">
+            <div class="p-6">
+              <h1 class="text-lg font-medium text-gray-700 capitalize lg:text-xl">Benefit yang kamu dapatkan:</h1>
+              <div class="mt-8 space-y-4">
+                <div class="flex items-center">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-blue-500" viewBox="0 0 20 20"
+                    fill="currentColor">
+                    <path fill-rule="evenodd"
+                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                      clip-rule="evenodd" />
+                  </svg>
+                  <span class="mx-4 text-gray-700">Menguasai teknik astrofotografi</span>
                 </div>
                 <div class="flex items-center">
                   <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-blue-500" viewBox="0 0 20 20"
@@ -308,30 +376,22 @@
                       d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
                       clip-rule="evenodd" />
                   </svg>
-                  <span class="mx-4 text-gray-700">Optimize hashtags</span>
+                  <span class="mx-4 text-gray-700">Memahami peralatan dan perangkat lunak astrofotografi</span>
                 </div>
                 <div class="flex items-center">
-                  <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-red-400" viewBox="0 0 20 20"
+                  <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-blue-500" viewBox="0 0 20 20"
                     fill="currentColor">
                     <path fill-rule="evenodd"
-                      d="M13.477 14.89A6 6 0 015.11 6.524l8.367 8.368zm1.414-1.414L6.524 5.11a6 6 0 018.367 8.367zM18 10a8 8 0 11-16 0 8 8 0 0116 0z"
+                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
                       clip-rule="evenodd" />
                   </svg>
-                  <span class="mx-4 text-gray-700">Mobile app</span>
-                </div>
-                <div class="flex items-center">
-                  <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-red-400" viewBox="0 0 20 20"
-                    fill="currentColor">
-                    <path fill-rule="evenodd"
-                      d="M13.477 14.89A6 6 0 015.11 6.524l8.367 8.368zm1.414-1.414L6.524 5.11a6 6 0 018.367 8.367zM18 10a8 8 0 11-16 0 8 8 0 0116 0z"
-                      clip-rule="evenodd" />
-                  </svg>
-                  <span class="mx-4 text-gray-700">Unlimited users</span>
+                  <span class="mx-4 text-gray-700">Mampu menghasilkan foto astronomi yang menakjubkan</span>
                 </div>
               </div>
             </div>
           </div>
-          <div class="max-w-sm mx-auto border rounded-lg md:mx-4">
+
+          <div class="card hover:shadow-lg max-w-sm mx-auto border rounded-lg md:mx-4">
             <div class="p-6">
               <h1 class="text-xl font-medium text-gray-700 capitalize lg:text-2xl">Eksplorasi Tata Surya</h1>
               <p class="mt-4 text-gray-500">
@@ -365,7 +425,7 @@
                       d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
                       clip-rule="evenodd" />
                   </svg>
-                  <span class="mx-4 text-gray-700">Memahami perbedaan antara planet-planet</span>
+                  <span class="mx-4 text-gray-700">Memahami perbedaan antar planet</span>
                 </div>
                 <div class="flex items-center">
                   <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-blue-500" viewBox="0 0 20 20"
@@ -375,191 +435,11 @@
                       clip-rule="evenodd" />
                   </svg>
                   <span class="mx-4 text-gray-700">Meningkatkan kemampuan mengamati objek langit</span>
-                </div>
-                <div class="flex items-center">
-                  <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-blue-500" viewBox="0 0 20 20"
-                    fill="currentColor">
-                    <path fill-rule="evenodd"
-                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                      clip-rule="evenodd" />
-                  </svg>
-                  <span class="mx-4 text-gray-700">Optimize hashtags</span>
-                </div>
-                <div class="flex items-center">
-                  <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-blue-500" viewBox="0 0 20 20"
-                    fill="currentColor">
-                    <path fill-rule="evenodd"
-                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                      clip-rule="evenodd" />
-                  </svg>
-                  <span class="mx-4 text-gray-700">Mobile app</span>
-                </div>
-                <div class="flex items-center">
-                  <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-blue-500" viewBox="0 0 20 20"
-                    fill="currentColor">
-                    <path fill-rule="evenodd"
-                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                      clip-rule="evenodd" />
-                  </svg>
-                  <span class="mx-4 text-gray-700">Unlimited users</span>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="max-w-sm mx-auto border rounded-lg md:mx-4">
-            <div class="p-6">
-              <h1 class="text-xl font-medium text-gray-700 capitalize lg:text-2xl">Simulasi Perjalanan ke Bulan</h1>
-              <p class="mt-4 text-gray-500">
-                Program ini merupakan simulasi lengkap perjalanan ke bulan yang menawarkan pengalaman mendekati
-                realitas. Peserta akan menjalani pelatihan intensif sebelum memulai simulasi, termasuk peluncuran,
-                pendaratan, dan eksplorasi permukaan bulan menggunakan teknologi simulasi canggih.
-              </p>
-              <h2 class="mt-4 text-2xl font-semibold text-gray-700 sm:text-3xl">Rp. 10.000.000<span
-                  class="text-base font-medium">/6 Bulan</span></h2>
-              <button
-                class="w-full px-4 py-2 mt-6 tracking-wide text-white capitalize transition-colors duration-300 transform bg-blue-600 rounded-md hover:bg-blue-500 focus:outline-none focus:bg-blue-500 focus:ring focus:ring-blue-300 focus:ring-opacity-80">
-                Mulai Sekarang
-              </button>
-            </div>
-            <hr class="border-gray-200">
-            <div class="p-6">
-              <h1 class="text-lg font-medium text-gray-700 capitalize lg:text-xl">Manfaat yang kamu dapatkan:</h1>
-              <div class="mt-8 space-y-4">
-                <div class="flex items-center">
-                  <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-blue-500" viewBox="0 0 20 20"
-                    fill="currentColor">
-                    <path fill-rule="evenodd"
-                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                      clip-rule="evenodd" />
-                  </svg>
-                  <span class="mx-4 text-gray-700">Pengentahun mendalam tentang tata surya</span>
-                </div>
-                <div class="flex items-center">
-                  <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-blue-500" viewBox="0 0 20 20"
-                    fill="currentColor">
-                    <path fill-rule="evenodd"
-                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                      clip-rule="evenodd" />
-                  </svg>
-                  <span class="mx-4 text-gray-700">Memahami perbedaan antara planet-planet</span>
-                </div>
-                <div class="flex items-center">
-                  <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-blue-500" viewBox="0 0 20 20"
-                    fill="currentColor">
-                    <path fill-rule="evenodd"
-                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                      clip-rule="evenodd" />
-                  </svg>
-                  <span class="mx-4 text-gray-700">Meningkatkan kemampuan mengamati objek langit</span>
-                </div>
-                <div class="flex items-center">
-                  <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-blue-500" viewBox="0 0 20 20"
-                    fill="currentColor">
-                    <path fill-rule="evenodd"
-                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                      clip-rule="evenodd" />
-                  </svg>
-                  <span class="mx-4 text-gray-700">Optimize hashtags</span>
-                </div>
-                <div class="flex items-center">
-                  <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-blue-500" viewBox="0 0 20 20"
-                    fill="currentColor">
-                    <path fill-rule="evenodd"
-                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                      clip-rule="evenodd" />
-                  </svg>
-                  <span class="mx-4 text-gray-700">Mobile app</span>
-                </div>
-                <div class="flex items-center">
-                  <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-blue-500" viewBox="0 0 20 20"
-                    fill="currentColor">
-                    <path fill-rule="evenodd"
-                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                      clip-rule="evenodd" />
-                  </svg>
-                  <span class="mx-4 text-gray-700">Unlimited users</span>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="max-w-sm mx-auto border rounded-lg md:mx-4">
-            <div class="p-6">
-              <h1 class="text-xl font-medium text-gray-700 capitalize lg:text-2xl">Simulasi Perjalanan ke Bulan</h1>
-              <p class="mt-4 text-gray-500">
-                Program ini merupakan simulasi lengkap perjalanan ke bulan yang menawarkan pengalaman mendekati
-                realitas. Peserta akan menjalani pelatihan intensif sebelum memulai simulasi, termasuk peluncuran,
-                pendaratan, dan eksplorasi permukaan bulan menggunakan teknologi simulasi canggih.
-              </p>
-              <h2 class="mt-4 text-2xl font-semibold text-gray-700 sm:text-3xl">Rp. 10.000.000<span
-                  class="text-base font-medium">/6 Bulan</span></h2>
-              <button
-                class="w-full px-4 py-2 mt-6 tracking-wide text-white capitalize transition-colors duration-300 transform bg-blue-600 rounded-md hover:bg-blue-500 focus:outline-none focus:bg-blue-500 focus:ring focus:ring-blue-300 focus:ring-opacity-80">
-                Mulai Sekarang
-              </button>
-            </div>
-            <hr class="border-gray-200">
-            <div class="p-6">
-              <h1 class="text-lg font-medium text-gray-700 capitalize lg:text-xl">Manfaat yang kamu dapatkan:</h1>
-              <div class="mt-8 space-y-4">
-                <div class="flex items-center">
-                  <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-blue-500" viewBox="0 0 20 20"
-                    fill="currentColor">
-                    <path fill-rule="evenodd"
-                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                      clip-rule="evenodd" />
-                  </svg>
-                  <span class="mx-4 text-gray-700">Pengentahun mendalam tentang tata surya</span>
-                </div>
-                <div class="flex items-center">
-                  <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-blue-500" viewBox="0 0 20 20"
-                    fill="currentColor">
-                    <path fill-rule="evenodd"
-                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                      clip-rule="evenodd" />
-                  </svg>
-                  <span class="mx-4 text-gray-700">Memahami perbedaan antara planet-planet</span>
-                </div>
-                <div class="flex items-center">
-                  <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-blue-500" viewBox="0 0 20 20"
-                    fill="currentColor">
-                    <path fill-rule="evenodd"
-                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                      clip-rule="evenodd" />
-                  </svg>
-                  <span class="mx-4 text-gray-700">Meningkatkan kemampuan mengamati objek langit</span>
-                </div>
-                <div class="flex items-center">
-                  <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-blue-500" viewBox="0 0 20 20"
-                    fill="currentColor">
-                    <path fill-rule="evenodd"
-                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                      clip-rule="evenodd" />
-                  </svg>
-                  <span class="mx-4 text-gray-700">Optimize hashtags</span>
-                </div>
-                <div class="flex items-center">
-                  <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-blue-500" viewBox="0 0 20 20"
-                    fill="currentColor">
-                    <path fill-rule="evenodd"
-                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                      clip-rule="evenodd" />
-                  </svg>
-                  <span class="mx-4 text-gray-700">Mobile app</span>
-                </div>
-                <div class="flex items-center">
-                  <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-blue-500" viewBox="0 0 20 20"
-                    fill="currentColor">
-                    <path fill-rule="evenodd"
-                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                      clip-rule="evenodd" />
-                  </svg>
-                  <span class="mx-4 text-gray-700">Unlimited users</span>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
     </section>
     <!-- ==================== END OF PROGRAM SECTION ==================== -->
 
@@ -569,7 +449,7 @@
       <div class="container px-6 py-16 mx-auto text-center">
         <div class="max-w-4xl mx-auto">
           <h2 class="text-3xl text-gray-900 font-bold lg:text-4xl text-center">
-            Wujudkan Mimpimu Bersama <span class="text-indigo-600">EDU-SPACE </span>
+            Ayo Menjadi Bagian dari <span class="text-indigo-600">EDU-SPACE </span>
           </h2>
           <p class="mt-6 text-gray-500 text-lg">
             Kami adalah sekolah inovatif yang berfokus pada pembelajaran luar angkasa. EduSpace akan memberikan
@@ -588,6 +468,98 @@
       </div>
     </section>
     <!-- ==================== END OF ABOUT SECTION ==================== -->
+
+    <footer class="footer bg-no-repeat bg-cover bg-center bg-[url('./assets/gif/stars.gif')] h-auto">
+      <div class="container px-6 py-12 mx-auto">
+        <div class="md:flex md:-mx-3 md:items-center md:justify-between">
+          <h1 class="text-xl font-semibold tracking-tight md:mx-3 xl:text-2xl text-white">
+            Mulai berlangganan sekarang
+          </h1>
+
+          <div class="mt-6 md:mx-3 shrink-0 md:mt-0 md:w-auto">
+            <a href="masuk.html">
+              <button
+                class="mt-4 px-6 py-2 font-medium text-white transition-colors duration-300 transform shadow-2xl bg-gradient-to-r from-indigo-700 to-blue-600 hover:from-blue-600 hover:to-indigo-700 rounded-md hover:bg-gray-800 focus:outline-none focus:bg-gray-800">
+                Masuk Sekarang
+              </button>
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                stroke="currentColor" class="w-5 h-5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <hr class="my-6 md:my-10 border-gray-700">
+
+        <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+          <div>
+            <p class="font-semibold text-white">Quick Link</p>
+
+            <div class="flex flex-col items-start mt-5 space-y-2">
+              <a href="#"
+                class="transition-colors duration-300 text-gray-300 hover:text-blue-400 hover:underline">Home</a>
+              <a href="#" class="transition-colors duration-300 text-gray-300 hover:text-blue-400 hover:underline">Who
+                We Are</a>
+              <a href="#" class="transition-colors duration-300 text-gray-300 hover:text-blue-400 hover:underline">Our
+                Philosophy</a>
+            </div>
+          </div>
+
+          <div>
+            <p class="font-semibold text-white">Industries</p>
+
+            <div class="flex flex-col items-start mt-5 space-y-2">
+              <a href="#"
+                class="transition-colors duration-300 text-gray-300 hover:text-blue-400 hover:underline">Retail
+                & E-Commerce</a>
+              <a href="#"
+                class="transition-colors duration-300 text-gray-300 hover:text-blue-400 hover:underline">Information
+                Technology</a>
+              <a href="#"
+                class="transition-colors duration-300 text-gray-300 hover:text-blue-400 hover:underline">Finance
+                & Insurance</a>
+            </div>
+          </div>
+
+          <div>
+            <p class="font-semibold text-white">Services</p>
+
+            <div class="flex flex-col items-start mt-5 space-y-2">
+              <a href="#"
+                class="transition-colors duration-300 text-gray-300 hover:text-blue-400 hover:underline">Translation</a>
+              <a href="#"
+                class="transition-colors duration-300 text-gray-300 hover:text-blue-400 hover:underline">Proofreading
+                & Editing</a>
+              <a href="#"
+                class="transition-colors duration-300 text-gray-300 hover:text-blue-400 hover:underline">Content
+                Creation</a>
+            </div>
+          </div>
+
+          <div>
+            <p class="font-semibold text-white">Contact Us</p>
+
+            <div class="flex flex-col items-start mt-5 space-y-2">
+              <a href="#" class="transition-colors duration-300 text-gray-300 hover:text-blue-400 hover:underline">+880
+                768 473 4978</a>
+              <a href="#"
+                class="transition-colors duration-300 text-gray-300 hover:text-blue-400 hover:underline">info@merakiui.com</a>
+            </div>
+          </div>
+        </div>
+
+        <hr class="my-6 md:my-10 border-gray-700">
+
+        <div class="flex flex-col items-center justify-between sm:flex-row">
+          <a href="#">
+            <img class="w-auto h-7" src="https://merakiui.com/images/full-logo.svg" alt="">
+          </a>
+
+          <p class="mt-4 text-sm sm:mt-0 text-gray-300">© Copyright 2021. All Rights Reserved.</p>
+        </div>
+      </div>
+    </footer>
 
 
     <!-- <section class="slider">
@@ -663,15 +635,13 @@
       var scrolled = window.pageYOffset || document.documentElement.scrollTop;
 
       var hero = document.querySelector('.hero');
-      hero.style.top = -(scrolled * 0.0315) + 'rem';
+      hero.style.top = -(scrolled * 0.0300) + 'rem';
 
       var heading = document.querySelector('.hero > h1');
       heading.style.top = -(scrolled * -0.005) + 'rem';
       heading.style.opacity = 1 - (scrolled * 0.00175);
     }
   </script>
-
-
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.1/TweenMax.min.js"></script>
   <script>

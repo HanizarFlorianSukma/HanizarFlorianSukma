@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EDU-SPACE | Blog</title>
+  <link rel="icon" type="image/png" href="https://app.spline.design/_assets/_icons/icon_favicon32x32.png" sizes="32x32">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="//unpkg.com/alpinejs" defer=""></script>
+
+  <!-- Require css -->
+  <style>
+    .hero {
+      position: fixed;
+      z-index: 1;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+    }
+
+    .main {
+      position: absolute;
+      z-index: 10;
+      top: 100vh;
+    }
+
+    .card,
+    .card img,
+    .card svg {
+      transition: transform 0.3s ease;
+    }
+
+    .card:hover img,
+    .card:hover svg {
+      transform: scale(1.2) rotate(180deg);
+    }
+
+    .card:hover {
+      transform: translateY(-10px);
+      background: white;
+      border-radius: 15px;
+    }
+
+    html,
+    body {
+      scroll-behavior: smooth;
+    }
+  </style>
+</head>
+
+<body>
+  <header class="w-full fixed top-0 left-0 bg-[#0A0E17] z-50" id="navbar">
+    <nav x-data="{ isOpen: false }"
+      class="container p-6 mx-auto lg:flex lg:justify-between lg:items-center backdrop-blur-md">
+      <div class="flex items-center justify-between">
+        <div>
+          <a class="flex gap-4 text-2xl font-bold text-white lg:text-3xl hover:text-gray-300" href="#">
+            <img src="https://app.spline.design/_assets/_icons/icon_favicon16x16.png" class="w-10 h-10" alt="">
+            EDU-SPACE
+          </a>
+        </div>
+
+        <!-- Mobile menu button -->
+        <div class="flex lg:hidden w-full">
+          <button @click="isOpen = !isOpen" type="button"
+            class="text-gray-200 hover:text-gray-400 focus:outline-none focus:text-gray-400" aria-label="toggle menu">
+            <svg x-show="!isOpen" xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24"
+              stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M4 8h16M4 16h16"></path>
+            </svg>
+            <svg x-show="isOpen" xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24"
+              stroke="currentColor" stroke-width="2" style="display: none;">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Mobile Menu open: "block", Menu closed: "hidden" -->
+      <div :class="[isOpen ? 'translate-x-0 opacity-100 ' : 'opacity-0 -translate-x-full']"
+        class="w-full absolute inset-x-0 z-[1000] md:w-full sm:w-full px-6 py-4 transition-all duration-300 ease-in-out shadow-md lg:bg-transparent lg:shadow-none h-screen bg-[#0A0E17] lg:h-fit lg:mt-0 lg:p-0 lg:top-0 lg:relative lg:w-auto lg:opacity-100 lg:translate-x-0 lg:flex lg:items-center">
+        <div
+          class="flex flex-col justify-center items-center gap-12 lg:gap-0 h-full lg:h-0 lg:mt-0 lg:flex-row lg:-px-4 lg:space-y-0 mx-4">
+          <a class="transition-colors duration-300 text-4xl lg:text-base transform lg:mx-4 lg:mt-0 text-gray-200 hover:text-white hover:border-b-2 hover:border-indigo-500"
+            href="index.html">Beranda
+          </a>
+          <a class="transition-colors duration-300 transform text-4xl lg:text-base lg:mx-4 lg:mt-0 text-gray-200 hover:text-white hover:border-b-2 hover:border-indigo-500"
+            href="tentang.html">Tentang</a>
+          <a class="transition-colors duration-300 transform text-4xl lg:text-base lg:mx-4 lg:mt-0 text-gray-200 hover:text-white hover:border-b-2 hover:border-indigo-500"
+            href="kelas-dan-program.html">Kelas & Program</a>
+          <a class="transition-colors duration-300 transform text-4xl lg:text-base lg:mx-4 lg:mt-0 text-gray-200 hover:text-white hover:border-b-2 hover:border-indigo-500 border-b-2 border-indigo-500"
+            href="blog.html">Blog</a>
+        </div>
+        <a href="masuk.html">
+          <button
+            class="px-6 py-2 font-medium text-white transition-colors duration-300 transform shadow-2xl bg-gradient-to-r from-indigo-700 to-blue-600 hover:from-blue-600 hover:to-indigo-700 rounded-md hover:bg-gray-800 focus:outline-none focus:bg-gray-800">
+            Masuk
+          </button>
+        </a>
+      </div>
+    </nav>
+  </header>
+  <!-- ==================== HERO SECTION ==================== -->
+  <section class="hero bg-no-repeat bg-cover bg-center bg-[url('./assets/gif/stars.gif')] h-screen">
+    <div id="hero-container" class="container mx-auto">
+      <div class="flex flex-col items-center py-6 lg:h-[100vh] lg:flex-row">
+        <div class="lg:w-3/5">
+          <h2 class="text-3xl font-black text-gray-100 lg:text-6xl uppercase">
+            Menjadi <span class="text-indigo-600">Pusat Edukasi</span> Luar
+            Angkasa yang Menginspirasi
+          </h2>
+          <p class="mt-4 text-gray-100 text-lg">
+            Temukan keajaiban dan misteri luar angkasa melalui <br> program
+            pembelajaran yang inovatif dan pengalaman luar biasa.
+          </p>
+          <a href="#tentang">
+            <button
+              class="mt-4 px-6 py-2 font-medium text-white transition-colors duration-300 transform shadow-2xl bg-gradient-to-r from-indigo-700 to-blue-600 hover:from-blue-600 hover:to-indigo-700 rounded-md hover:bg-gray-800 focus:outline-none focus:bg-gray-800">
+              Jelajahi Sekarang
+            </button>
+          </a>
+        </div>
+
+        <div class="flex mt-8 lg:w-2/5 lg:justify-end lg:mt-0">
+          <div class="w-full max-w-md rounded-lg">
+            <img src="assets/img/Rocket.webp" alt="Icon">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- ==================== END OF HERO SECTION ==================== -->
+
+  <!-- ==================== MAIN CONTENT ==================== -->
+  <main class="main bg-gray-100 w-full pt-8">
+
+    <!-- ==================== WHY SECTION ==================== -->
+    <section class="blog">
+      <div class="container px-6 py-10 mx-auto">
+        <div class="flex items-center justify-between">
+          <h1 class="text-2xl font-semibold text-gray-800 capitalize lg:text-3xl">Blog Terbaru</h1>
+
+          <button class="focus:outline-none">
+            <svg xmlns="http://www.w3.org/2000/svg"
+              class="w-6 h-6 text-gray-600 transition-colors duration-300 transform hover:text-indigo-500" fill="none"
+              viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+            </svg>
+          </button>
+        </div>
+
+        <hr class="my-8 border-gray-200">
+
+        <div class="grid grid-cols-1 gap-8 md:grid-cols-2 xl:grid-cols-3">
+          <div>
+            <img class="object-cover object-center w-full h-64 rounded-lg lg:h-80"
+              src="https://images.unsplash.com/photo-1624996379697-f01d168b1a52?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
+              alt="">
+
+            <div class="mt-8">
+              <span class="text-indigo-500 uppercase">Luar Angkasa</span>
+
+              <h1 class="mt-4 text-xl font-semibold text-gray-800">
+                Menguak asal usul Black Hole
+              </h1>
+
+              <p class="mt-2 text-gray-500">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam est asperiores vel, ab animi
+                recusandae nulla veritatis id tempore sapiente
+              </p>
+
+              <div class="flex items-center justify-between mt-4">
+                <div>
+                  <a href="#" class="text-lg font-medium text-gray-700 hover:underline hover:text-gray-500">
+                    John snow
+                  </a>
+
+                  <p class="text-sm text-gray-500">February 1, 2022</p>
+                </div>
+
+                <a href="#" class="inline-block text-indigo-500 underline hover:text-indigo-400">Baca selengkapnya</a>
+              </div>
+
+            </div>
+          </div>
+
+          <div>
+            <img class="object-cover object-center w-full h-64 rounded-lg lg:h-80"
+              src="https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
+              alt="">
+
+            <div class="mt-8">
+              <span class="text-indigo-500 uppercase">Planet</span>
+
+              <h1 class="mt-4 text-xl font-semibold text-gray-800">
+                Planet yang mirip dengan Bumi</h1>
+
+              <p class="mt-2 text-gray-500">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam est asperiores vel, ab animi
+                recusandae nulla veritatis id tempore sapiente
+              </p>
+
+              <div class="flex items-center justify-between mt-4">
+                <div>
+                  <a href="#" class="text-lg font-medium text-gray-700 hover:underline hover:text-gray-500">
+                    Arthur Melo
+                  </a>
+
+                  <p class="text-sm text-gray-500">February 6, 2022</p>
+                </div>
+
+                <a href="#" class="inline-block text-indigo-500 underline hover:text-indigo-400">Baca selengkapnya</a>
+              </div>
+
+            </div>
+          </div>
+
+          <div>
+            <img class="object-cover object-center w-full h-64 rounded-lg lg:h-80"
+              src="https://images.unsplash.com/photo-1597534458220-9fb4969f2df5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1374&q=80"
+              alt="">
+
+            <div class="mt-8">
+              <span class="text-indigo-500 uppercase">Luar Angkasa</span>
+
+              <h1 class="mt-4 text-xl font-semibold text-gray-800">
+                10 Fakta Unik Tentang Luar Angkasa
+              </h1>
+
+              <p class="mt-2 text-gray-500">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam est asperiores vel, ab animi
+                recusandae nulla veritatis id tempore sapiente
+              </p>
+
+              <div class="flex items-center justify-between mt-4">
+                <div>
+                  <a href="#" class="text-lg font-medium text-gray-700 hover:underline hover:text-gray-500">
+                    Tom Hank
+                  </a>
+
+                  <p class="text-sm text-gray-500">February 19, 2022</p>
+                </div>
+
+                <a href="#" class="inline-block text-indigo-500 underline hover:text-indigo-400">Baca selengkapnya</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="bg-white py-20">
+      <div class="container px-6 py-10 mx-auto">
+        <h1 class="text-2xl font-semibold text-gray-800 capitalize lg:text-3xl">Blog dan Artikel</h1>
+
+        <div class="grid grid-cols-1 gap-8 mt-8 md:mt-16 md:grid-cols-2">
+          <div class="lg:flex">
+            <img class="object-cover w-full h-56 rounded-lg lg:w-64"
+              src="https://images.unsplash.com/photo-1515378960530-7c0da6231fb1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
+              alt="">
+            <div class="flex flex-col justify-between py-6 lg:mx-6">
+              <a href="#" class="text-xl font-semibold text-gray-800 hover:underline ">
+                Misteri Alam Semesta: Menjelajahi Keajaiban dan Rahasia di Luar Angkasa
+              </a>
+              <span class="text-sm text-gray-500">On: 20 October 2019</span>
+            </div>
+          </div>
+          <div class="lg:flex">
+            <img class="object-cover w-full h-56 rounded-lg lg:w-64"
+              src="https://images.unsplash.com/photo-1497032628192-86f99bcd76bc?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
+              alt="">
+            <div class="flex flex-col justify-between py-6 lg:mx-6">
+              <a href="#" class="text-xl font-semibold text-gray-800 hover:underline ">
+                7 Planet Teraneh di Tatasurya yang Penuh Mysteri
+              </a>
+              <span class="text-sm text-gray-500">On: 20 October 2019</span>
+            </div>
+          </div>
+          <div class="lg:flex">
+            <img class="object-cover w-full h-56 rounded-lg lg:w-64"
+              src="https://images.unsplash.com/photo-1544654803-b69140b285a1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
+              alt="">
+            <div class="flex flex-col justify-between py-6 lg:mx-6">
+              <a href="#" class="text-xl font-semibold text-gray-800 hover:underline ">
+                Pengenalan tentang Planet-planet di Tatasurya
+              </a>
+              <span class="text-sm text-gray-500">On: 25 November 2020</span>
+            </div>
+          </div>
+          <div class="lg:flex">
+            <img class="object-cover w-full h-56 rounded-lg lg:w-64"
+              src="https://images.unsplash.com/photo-1530099486328-e021101a494a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1547&q=80"
+              alt="">
+            <div class="flex flex-col justify-between py-6 lg:mx-6">
+              <a href="#" class="text-xl font-semibold text-gray-800 hover:underline ">
+                Apa yang Terjadi Jika Manusia Hidup di Luar Angkasa?
+              </a>
+              <span class="text-sm text-gray-500">On: 30 September 2020</span>
+            </div>
+          </div>
+          <div class="lg:flex">
+            <img class="object-cover w-full h-56 rounded-lg lg:w-64"
+              src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1484&q=80"
+              alt="">
+            <div class="flex flex-col justify-between py-6 lg:mx-6">
+              <a href="#" class="text-xl font-semibold text-gray-800 hover:underline ">
+                Menjelajahi Galaksi: Mencari Tahu Lebih Banyak Tentang Bima Sakti
+              </a>
+              <span class="text-sm text-gray-500">On: 13 October 2019</span>
+            </div>
+          </div>
+          <div class="lg:flex">
+            <img class="object-cover w-full h-56 rounded-lg lg:w-64"
+              src="https://images.unsplash.com/photo-1624996379697-f01d168b1a52?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
+              alt="">
+            <div class="flex flex-col justify-between py-6 lg:mx-6">
+              <a href="#" class="text-xl font-semibold text-gray-800 hover:underline ">
+                Planet Mars: Apakah Bisa Menjadi Tempat Tinggal Manusia?
+              </a>
+              <span class="text-sm text-gray-500">On: 20 October 2019</span>
+            </div>
+          </div>
+          <div class="lg:flex">
+            <img class="object-cover w-full h-56 rounded-lg lg:w-64"
+              src="https://images.unsplash.com/photo-1515378960530-7c0da6231fb1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
+              alt="">
+            <div class="flex flex-col justify-between py-6 lg:mx-6">
+              <a href="#" class="text-xl font-semibold text-gray-800 hover:underline ">
+                Misteri Alam Semesta: Menjelajahi Keajaiban dan Rahasia di Luar Angkasa
+              </a>
+              <span class="text-sm text-gray-500">On: 20 October 2019</span>
+            </div>
+          </div>
+          <div class="lg:flex">
+            <img class="object-cover w-full h-56 rounded-lg lg:w-64"
+              src="https://images.unsplash.com/photo-1497032628192-86f99bcd76bc?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
+              alt="">
+            <div class="flex flex-col justify-between py-6 lg:mx-6">
+              <a href="#" class="text-xl font-semibold text-gray-800 hover:underline ">
+                7 Planet Teraneh di Tatasurya yang Penuh Mysteri
+              </a>
+              <span class="text-sm text-gray-500">On: 20 October 2019</span>
+            </div>
+          </div>
+          <div class="lg:flex">
+            <img class="object-cover w-full h-56 rounded-lg lg:w-64"
+              src="https://images.unsplash.com/photo-1544654803-b69140b285a1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
+              alt="">
+            <div class="flex flex-col justify-between py-6 lg:mx-6">
+              <a href="#" class="text-xl font-semibold text-gray-800 hover:underline ">
+                Pengenalan tentang Planet-planet di Tatasurya
+              </a>
+              <span class="text-sm text-gray-500">On: 25 November 2020</span>
+            </div>
+          </div>
+          <div class="lg:flex">
+            <img class="object-cover w-full h-56 rounded-lg lg:w-64"
+              src="https://images.unsplash.com/photo-1530099486328-e021101a494a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1547&q=80"
+              alt="">
+            <div class="flex flex-col justify-between py-6 lg:mx-6">
+              <a href="#" class="text-xl font-semibold text-gray-800 hover:underline ">
+                Apa yang Terjadi Jika Manusia Hidup di Luar Angkasa?
+              </a>
+              <span class="text-sm text-gray-500">On: 30 September 2020</span>
+            </div>
+          </div>
+          <div class="lg:flex">
+            <img class="object-cover w-full h-56 rounded-lg lg:w-64"
+              src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1484&q=80"
+              alt="">
+            <div class="flex flex-col justify-between py-6 lg:mx-6">
+              <a href="#" class="text-xl font-semibold text-gray-800 hover:underline ">
+                Menjelajahi Galaksi: Mencari Tahu Lebih Banyak Tentang Bima Sakti
+              </a>
+              <span class="text-sm text-gray-500">On: 13 October 2019</span>
+            </div>
+          </div>
+          <div class="lg:flex">
+            <img class="object-cover w-full h-56 rounded-lg lg:w-64"
+              src="https://images.unsplash.com/photo-1624996379697-f01d168b1a52?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
+              alt="">
+            <div class="flex flex-col justify-between py-6 lg:mx-6">
+              <a href="#" class="text-xl font-semibold text-gray-800 hover:underline ">
+                Planet Mars: Apakah Bisa Menjadi Tempat Tinggal Manusia?
+              </a>
+              <span class="text-sm text-gray-500">On: 20 October 2019</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="container mx-auto flex items-center justify-between mt-6">
+        <a href="#"
+          class="flex items-center px-5 py-2 text-sm text-gray-700 capitalize transition-colors duration-200 bg-white border rounded-md gap-x-2 hover:bg-gray-100">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+            stroke="currentColor" class="w-5 h-5 rtl:-scale-x-100">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 15.75L3 12m0 0l3.75-3.75M3 12h18" />
+          </svg>
+          <span>
+            Sebelumnya
+          </span>
+        </a>
+        <div class="items-center hidden lg:flex gap-x-3">
+          <a href="#" class="px-2 py-1 text-sm text-blue-500 rounded-md bg-blue-100/60">1</a>
+          <a href="#" class="px-2 py-1 text-sm text-gray-500 rounded-md hover:bg-gray-100">2</a>
+          <a href="#" class="px-2 py-1 text-sm text-gray-500 rounded-md hover:bg-gray-100">3</a>
+          <a href="#" class="px-2 py-1 text-sm text-gray-500 rounded-md hover:bg-gray-100">...</a>
+          <a href="#" class="px-2 py-1 text-sm text-gray-500 rounded-md hover:bg-gray-100">12</a>
+          <a href="#" class="px-2 py-1 text-sm text-gray-500 rounded-md hover:bg-gray-100">13</a>
+          <a href="#" class="px-2 py-1 text-sm text-gray-500 rounded-md hover:bg-gray-100">14</a>
+        </div>
+        <a href="#"
+          class="flex items-center px-5 py-2 text-sm text-gray-700 capitalize transition-colors duration-200 bg-white border rounded-md gap-x-2 hover:bg-gray-100">
+          <span>
+            Selanjutnya
+          </span>
+
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+            stroke="currentColor" class="w-5 h-5 rtl:-scale-x-100">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
+          </svg>
+        </a>
+      </div>
+    </section>
+
+    <footer class="footer bg-no-repeat bg-cover bg-center bg-[url('./assets/gif/stars.gif')] h-auto">
+      <div class="container px-6 py-12 mx-auto">
+        <div class="md:flex md:-mx-3 md:items-center md:justify-between">
+          <h1 class="text-xl font-semibold tracking-tight md:mx-3 xl:text-2xl text-white">
+            Mulai berlangganan sekarang
+          </h1>
+
+          <div class="mt-6 md:mx-3 shrink-0 md:mt-0 md:w-auto">
+            <a href="masuk.html">
+              <button
+                class="mt-4 px-6 py-2 font-medium text-white transition-colors duration-300 transform shadow-2xl bg-gradient-to-r from-indigo-700 to-blue-600 hover:from-blue-600 hover:to-indigo-700 rounded-md hover:bg-gray-800 focus:outline-none focus:bg-gray-800">
+                Masuk Sekarang
+              </button>
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                stroke="currentColor" class="w-5 h-5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <hr class="my-6 md:my-10 border-gray-700">
+
+        <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+          <div>
+            <p class="font-semibold text-white">Quick Link</p>
+
+            <div class="flex flex-col items-start mt-5 space-y-2">
+              <a href="#"
+                class="transition-colors duration-300 text-gray-300 hover:text-blue-400 hover:underline">Home</a>
+              <a href="#" class="transition-colors duration-300 text-gray-300 hover:text-blue-400 hover:underline">Who
+                We Are</a>
+              <a href="#" class="transition-colors duration-300 text-gray-300 hover:text-blue-400 hover:underline">Our
+                Philosophy</a>
+            </div>
+          </div>
+
+          <div>
+            <p class="font-semibold text-white">Industries</p>
+
+            <div class="flex flex-col items-start mt-5 space-y-2">
+              <a href="#"
+                class="transition-colors duration-300 text-gray-300 hover:text-blue-400 hover:underline">Retail
+                & E-Commerce</a>
+              <a href="#"
+                class="transition-colors duration-300 text-gray-300 hover:text-blue-400 hover:underline">Information
+                Technology</a>
+              <a href="#"
+                class="transition-colors duration-300 text-gray-300 hover:text-blue-400 hover:underline">Finance
+                & Insurance</a>
+            </div>
+          </div>
+
+          <div>
+            <p class="font-semibold text-white">Services</p>
+
+            <div class="flex flex-col items-start mt-5 space-y-2">
+              <a href="#"
+                class="transition-colors duration-300 text-gray-300 hover:text-blue-400 hover:underline">Translation</a>
+              <a href="#"
+                class="transition-colors duration-300 text-gray-300 hover:text-blue-400 hover:underline">Proofreading
+                & Editing</a>
+              <a href="#"
+                class="transition-colors duration-300 text-gray-300 hover:text-blue-400 hover:underline">Content
+                Creation</a>
+            </div>
+          </div>
+
+          <div>
+            <p class="font-semibold text-white">Contact Us</p>
+
+            <div class="flex flex-col items-start mt-5 space-y-2">
+              <a href="#" class="transition-colors duration-300 text-gray-300 hover:text-blue-400 hover:underline">+880
+                768 473 4978</a>
+              <a href="#"
+                class="transition-colors duration-300 text-gray-300 hover:text-blue-400 hover:underline">info@merakiui.com</a>
+            </div>
+          </div>
+        </div>
+
+        <hr class="my-6 md:my-10 border-gray-700">
+
+        <div class="flex flex-col items-center justify-between sm:flex-row">
+          <a href="#">
+            <img class="w-auto h-7" src="https://merakiui.com/images/full-logo.svg" alt="">
+          </a>
+
+          <p class="mt-4 text-sm sm:mt-0 text-gray-300">© Copyright 2021. All Rights Reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+  </main>
+  <!-- ==================== END OF MAIN CONTENT ==================== -->
+
+
+  <script>
+    window.addEventListener('scroll', parallax);
+
+    function parallax() {
+      var scrolled = window.pageYOffset || document.documentElement.scrollTop;
+
+      var hero = document.querySelector('.hero');
+      hero.style.top = -(scrolled * 0.0315) + 'rem';
+
+      var heading = document.querySelector('.hero > h1');
+      heading.style.top = -(scrolled * -0.005) + 'rem';
+      heading.style.opacity = 1 - (scrolled * 0.00175);
+    }
+  </script>
+
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.1/TweenMax.min.js"></script>
+  <script>
+    var container = document.getElementById('hero-container');
+    var rect = container.getBoundingClientRect();
+    var mouse = {
+      x: 0,
+      y: 0,
+      moved: false
+    };
+
+    container.addEventListener('mousemove', function (e) {
+      mouse.moved = true;
+      mouse.x = e.clientX - rect.left;
+      mouse.y = e.clientY - rect.top;
+    });
+
+    function tickHandler() {
+      if (mouse.moved) {
+        parallaxIt(".slide", -100);
+        parallaxIt("img", -30);
+      }
+      mouse.moved = false;
+    }
+
+    function parallaxIt(target, movement) {
+      var elements = document.querySelectorAll(target);
+      var i;
+      for (i = 0; i < elements.length; i++) {
+        var element = elements[i];
+        var elementRect = element.getBoundingClientRect();
+        var x = (mouse.x - rect.width / 2) / rect.width * movement;
+        var y = (mouse.y - rect.height / 2) / rect.height * movement;
+        TweenMax.to(element, 0.5, {
+          x: x,
+          y: y
+        });
+      }
+    }
+
+    window.addEventListener('resize', function () {
+      rect = container.getBoundingClientRect();
+    });
+
+    window.addEventListener('scroll', function () {
+      rect = container.getBoundingClientRect();
+    });
+
+    TweenLite.ticker.addEventListener('tick', tickHandler);
+  </script>
+</body>
+
+</html>
